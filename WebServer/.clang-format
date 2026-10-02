@@ -1,0 +1,12 @@
+---
+# We'll use defaults from the GNU style, but with 4 columns indentation.
+BasedOnStyle: LLVM
+IndentWidth: 4
+---
+Language: Cpp
+# deprecated and will become BreakAfterReturnType in clang 19
+AlwaysBreakAfterDefinitionReturnType: None
+BreakBeforeBraces: Linux
+# Force pointers to the type for C++.
+DerivePointerAlignment: false
+PointerAlignment: Left

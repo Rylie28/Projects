@@ -1,0 +1,154 @@
+**HUNT THE WUMPUS PROTOCOL** (HTWP)
+
+# OVERVIEW
+The Hunt The Wumpus Protocol (HTWP) is a tet-based communication protocol
+used by clients and servers to run a multiplayer Hunt the Wumpus game. 
+
+The protocol is inspired by both HTTP and SMTP. 
+
+From HTTP, HTWP borrows the idea of structured messages consisting of: 
+- Start line
+- Headers 
+- Optional message body
+
+From HTTP, HTWP borrows the idea of a server and client using responses
+and requests to communicate. Players will recieve responses from server 
+when request is made or something happens in game. 
+
+From SMTP, HTWP borrows the idea of using simple four letter text commands
+and response codes. 
+
+This hybrid approach allows HTWP messages to contain all the useful informantion
+in a structured but easy to read format. 
+
+# BEHAVIOR: 
+communcation between a client and server works like this: 
+* A player (client) sends request using simple commands to server
+* The server responds with status codes and messages
+* The server may also send event updates when something happends during a game
+
+All messages are plain text and separated by \r\n 
+
+# FORMAT: 
+========================================================
+                    HTWP REQUEST
+========================================================
+START-LINE
++-------------------+-------------+----------------------+
+| 4 Letter COMMAND  | [Argument]  | Game Version         |
+|                   |             | (HTWP/1.0)           |
++-------------------+-------------+----------------------+
+HEADERS
++-------------------------------------------------------+
+| Header: Value                                         |
+| Header: Value                                         |
+| Header: Value                                         |
+| Header: Value                                         |
++-------------------------------------------------------+
+| Blank Space                                           |
++-------------------------------------------------------+
+BODY (optional)
++-------------------------------------------------------+
+| Any additional information is put here                |
++-------------------------------------------------------+
+
+========================================================
+                    HTWP RESPONSE
+========================================================
+START-LINE
++----------------------+--------------+------------------+
+| Game Version         | STATUS CODE  | STATUS MESSAGE   |
+| (HTWP/1.0)           |              |                  |
++----------------------+--------------+------------------+
+HEADERS
++-------------------------------------------------------+
+| Header: Value                                         |
+| Header: Value                                         |
+| Header: Value                                         |
+| Header: Value                                         |
++-------------------------------------------------------+
+| Blank Space                                           |
++-------------------------------------------------------+
+BODY (optional)
++-------------------------------------------------------+
+| Any additional information is put here                |
++-------------------------------------------------------+
+
+# SOCKET CONFIG: 
+Host: thomas.butler.edu 
+Port: 52805
+Type: TCP
+
+# CLIENT COMMANDS:
+Players interact with server using four letter commands
+| Command   | Description                                 |
+| --------- | ------------------------------------------- |
+| JOIN      | Join the server                             |
+| QUIT      | Quit the server                             |
+| PLAY      | Join a game                                 |
+| EXIT      | Leave a game                                |
+| MOVE X    | Move to cave number X                       |
+| FIRE X    | Fire an arrow into cave X                   |
+| HELP      | Display available commands                  |
+| TALK name | Send a private message to a player          |
+| YELL      | Send a message to everyone in the same cave |
+
+
+# CODES:
+Server response are grouped by category
+
+200 series -- Successful
+200 - OK
+201 - joined server 
+202 - joined game
+
+400 series -- Game Events 
+405 - eaten by wumpus
+406 - fell into pit
+407 - picked up by bats 
+408 - Arrow hit wumpus 
+409 - Arrow missed
+410 - another player eaten by wumpus 
+411 - player entered cave
+412 - Player killed wumpus
+413 - Player has yelled to everyone
+414 - player is talking with you
+
+600 series -- Errors 
+600 - Unable to join server 
+601 - Unable to join game 
+602 - invalid cave number 
+603 - No arrows left 
+604 - invalid command
+
+# HEADERS:
+The following headers may appear in HTWP messages
+
+| Header       | Type      | Description            |
+| ------------ | --------- | ---------------------- |
+| Host         | string    | server hostname        |
+| Port         | int       | server port            |
+| Player       | string    | player name            |
+| Game-ID      | string    | game identifier        |
+| Date         | string    | timestamp              |
+| Current-Cave | int       | player's location      |
+| Nearby-Caves | list<int> | adjacent caves         |
+| Message      | boolean   | indicates chat message |
+
+# DESIGN DECISIONS: 
+text-based protocol 
+HTWP is fully text based to make it easy to debug, readable, and compatible
+with tools like netcat
+
+HTTP-Style structure
+Using start lines and headers allows messages to carry large amounts of structured 
+information without becoming confusing. 
+
+Four letter Commands 
+Commands were limited to four letters to keep the protocol consistent, easy to parse, 
+and easy for players to remember 
+
+Response codes
+using numeric codes allows easy error handing. Clients will be able to easily interprete 
+what the response code is. Because the codes are numeric they can be seperated into 
+successes, errors, and events. 
