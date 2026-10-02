@@ -1,80 +1,194 @@
-# Butler University — Computer Science Portfolio
+# IT Help Desk Application
 
-Welcome to my Butler University GitHub repository! This repository contains coursework, projects, research, and programming assignments I have completed throughout my time studying Computer Science at **Butler University**.
+## Overview
 
-The projects here represent my development across software engineering, programming, data analysis, parallel computing, artificial intelligence, and user experience.
+The **IT Help Desk** is an intranet-based application designed to help organizations manage IT-related problems that occur during project development. The system provides a centralized platform where project members can submit support tickets, IT support staff can resolve or share tickets, and report managers can monitor and assign high-priority issues.
 
----
+The application also provides online help resources, frequently reported problems, email notifications, ticket prioritization, and reporting functionality.
 
-## About Me
+## Features
 
-I am a Computer Science student with minors in Graphic Design and Data Science at **Butler University** with an interest in **software development, User Experience (UX/UI), and Developing innovative applications**.
+* **User Registration & Login**
 
-Throughout my coursework, I have worked on projects ranging from developing software and analyzing data to designing software systems and researching the use of Generative AI in Software Engineering education.
+  * Administrators can register users.
+  * Users receive unique login credentials to access the system.
 
-I am particularly interested in opportunities where I can combine **design, programming, problem-solving, and user experience** to create useful applications.
+* **Online Help**
 
----
+  * Provides documentation and tutorials to help users resolve common problems.
+  * Supports documents such as PDF and DOC files.
 
-## Coursework & Areas of Study
+* **Existing Problem List**
 
-This repository includes work from several areas of my Computer Science education:
+  * Displays frequently reported problems and their solutions.
+  * Helps users find solutions to common issues before submitting a new ticket.
 
-* **Software Engineering**
-* **Object-Oriented Programming**
-* **Parallel & Distributed Computing**
-* **Data Analysis**
-* **Artificial Intelligence**
-* **Requirements Engineering**
-* **Database Design**
-* **User Experience / User Interface Design**
-* **Generative AI & Software Engineering Education**
-* **Systems & Application Development**
+* **Ticket Management**
 
----
+  * Project members can create support tickets describing their problems.
+  * Users can view the status of submitted tickets.
+  * Closed tickets can be reopened if the problem was not properly resolved.
 
-## Programming & Technologies
+* **Ticket Resolution**
 
-### Languages
+  * IT support team members can view and solve submitted tickets.
+  * Tickets can be shared with other IT support members when additional assistance is required.
 
-* C++
-* R
-* Java
-* SQL
-* HTML/CSS/Javascrip
-* React
-* Python
+* **Ticket Monitoring & Assignment**
 
-### Tools & Technologies
+  * Report managers can monitor ticket status.
+  * High-priority tickets can be assigned to IT support team members.
+  * Tickets can be automatically prioritized when they exceed their Service Level Agreement (SLA).
 
-* MPI (Message Passing Interface)
-* Git & GitHub
-* RStudio
-* UML
-* Data visualization
-* Generative AI / LLMs
-* Three-tier software architecture
-* Relational databases
+* **Reporting**
 
----
+  * Generates reports showing ticket activity, including solved and unsolved tickets.
 
-# Repository Contents
+* **Email Notifications**
 
-Branches include:
+  * Sends email alerts when tickets are raised, updated, solved, or shared.
+  * Notifications include relevant date and time information.
 
-* CS248
-* CS341
-* Networks
-* IT Help Desk
+## User Roles
 
-### Projects
+### Administrator
 
-#### IT Help Desk
+Administrators are responsible for:
 
-Worked with an IT Help Desk system to analyze requirements and develop software engineering artifacts including requirements documentation, user stories, and UML diagrams.
+* Registering users
+* Generating reports
+* Managing email alerts
 
-#### Generative AI & Software Engineering Research
+### Project Member
 
-One of my research projects investigates the role of **Generative AI in Software Engineering education**.
+Project members can:
 
-The research examines how AI-generated software engineering artifacts compare with student-produced work and explores both the potential benefits and limitations of using GenAI in an introductory Software Engineering.
+* Log into the system
+* Access online help
+* View frequently reported problems
+* Create support tickets
+* Reopen previously closed tickets
+
+### IT Support Team
+
+IT support members can:
+
+* View and solve tickets
+* Update ticket solutions
+* Share tickets with other support team members
+
+### Report Manager
+
+Report managers can:
+
+* Monitor ticket status
+* Assign high-priority tickets to IT support team members
+
+## System Components
+
+The application consists of the following major components:
+
+1. Registration
+2. Login
+3. Online Help
+4. Existing Problem List
+5. Raise Ticket
+6. Re-open Ticket
+7. Solve Ticket
+8. Share Ticket
+9. Monitor Ticket
+10. Assign Ticket
+11. Report Generation
+12. Email Alerts
+
+## Ticket Workflow
+
+A typical support request follows this process:
+
+```text
+Project Member
+      |
+      v
+  Raise Ticket
+      |
+      v
+IT Support Team
+      |
+      +------> Solve Ticket
+      |
+      +------> Share Ticket
+                    |
+                    v
+              Other Support Member
+      |
+      v
+  Ticket Updated
+      |
+      v
+  Email Notification
+```
+
+If a ticket is closed without providing an appropriate solution, the project member can reopen the ticket and raise the problem again.
+
+Tickets that are not resolved within the defined SLA can also receive increased priority.
+
+## System Relationships
+
+The major system components interact as follows:
+
+* **Registration → Login**
+
+  * Registered users receive credentials that allow them to access the system.
+
+* **Raise Ticket → Existing Problem List**
+
+  * Previously submitted tickets can be used to identify frequently occurring problems.
+
+* **Raise Ticket → Re-open Ticket**
+
+  * Previously raised tickets can be reopened when a problem has not been properly resolved.
+
+* **Raise Ticket → Solve Ticket**
+
+  * IT support members are responsible for resolving submitted tickets.
+
+* **Solve Ticket → Share Ticket**
+
+  * Support members can transfer tickets to other team members when they cannot resolve an issue.
+
+* **Solve/Share Ticket → Email Alert**
+
+  * Users can receive email notifications about ticket activity.
+
+* **Tickets → Reports**
+
+  * Ticket information is used to generate reports about system activity.
+
+## Requirements & Constraints
+
+The original project specification identifies several system requirements and environmental constraints:
+
+* An internet connection is required for information sharing and email alerts.
+* Adobe Reader and Lotus Symphony are identified as requirements for accessing online help documents.
+* A web browser and Java plugins are identified as required system software.
+
+## Project Scope
+
+The IT Help Desk is intended to provide employees with a centralized platform for communicating IT problems and managing their resolution.
+
+The system supports:
+
+* Employee authentication
+* Problem documentation and tutorials
+* Ticket creation and tracking
+* Ticket prioritization
+* Ticket assignment
+* Ticket sharing
+* Ticket reopening
+* Ticket resolution
+* Reporting
+* Email notifications
+
+## Project Purpose
+
+The primary goal of the IT Help Desk is to improve communication between project members and IT support teams by providing a centralized system for reporting, tracking, resolving, and monitoring technical issues.
