@@ -1,0 +1,160 @@
+HASH Tables 
+- Code from Doubly linked list 
+
+Hash Tables: increase efficientcy 
+are circular
+taking some sort of function and applying an algorythm 
+many different ways we can map a key to a specific 'bucket' 
+- use a modulus 
+
+take a key and mod it by the size of a hash table
+key % size_of_hash_table <-- our hash table 
+
+0 1 2 3 
+4 5   7
+^
+KEY 
+4 % 4 = 0 
+jump immeadiatly to the position in the array 
+5 % 4 = 1 
+7 % 4 = 3
+15 % 4 = 3 
+^ this creates a problem called a collision 
+when we don't have a maping problem then we won't 
+have a collision
+
+PERFECT HASH FUNCTION: the hash function in the ideal situation
+- this function maps each search key into a unique location of the 
+hash table 
+
+a perfect hash function is only possible if 
+you know all the search keys 
+
+How do we handle unavoidable collisions 
+* selecting digits 
+	- you select specific digits in your search key to pick the index
+	that the item should be inserted into 
+	- problem: doesn't distribute the entries even;y in the hash table
+* Folding 
+	- add up all the digits of our search key and then place the entry 
+	in the summation index
+	- problem: we still have the potential for future collisions and you 
+	may have to 'fold' a number of times before solving the collision
+* Modulo 
+	- Computign the modulus of the table size and placing the entry into 
+	that position 
+	- this eliminates one of the problem with respect to folding 
+	- problem: still potention for future collisions cause you to
+	modulo a number of times before solving the collisions
+	
+Approach 1: Open Addressing 
+Linear Probing: go one by one until their's an open spot 
+	- Insert(x): keep probing until an empty spot is found, insert key
+	once one is found 
+	- Search(x): keep probing until slots key doesn't become equal to x 
+	or an empty slot is found 
+	- Delete(x): keep probing until the key's slot is found 
+	FUNCTION: hash(x) = x % size + n
+	Challenges - when you remove an entry we can't just leave the space
+	open because we could place an entry that doesn't belong in the spot 
+	due to linear probing 
+	Keep track of if a hash entry is occupied, removed or empty
+	can insert over an empty or removed entry
+	Problems: Entries tend to cluster together
+	PRIMARY CLUSTERING:  
+Quadratic Probing: probing quadratically for an open position
+- jump ahead 1, then 2, then 4 ect for all values of i 
+	- if the hash table is full you'll have to rehash the entire table 
+	FUNCTION: hash(x) = 
+	Problem: causes secondary clustering 
+	SECONDARY CLUSTERING: 
+
+Double Hashing: if the first hash fails use a second hash function
+	FUNCTION: 
+	Problem: causes various different clusterings 
+Increase size of hash table 
+Approach 2: Closed Addressing 
+- resolving collisions by restructuring the Hash Table 
+- Create a doubly linked list onto the hash table bucket
+- eliminates the problem of having to go through the hash table 
+Methods: 
+- Buckets 
+- Separate Chaining 
+	- Singularly Linked List 
+	- Doubly Linked List
+	- avoids collisions all together by chaing entries to 
+	
+Cuckoo Hashing 
+- the value that we're looking for is only ever in two places 
+- only have to look two places instead of multiple
+- Collision Handling Technique: Named after the Cuckoo bird 
+- the birds take over other birds nests and remove any eggs/babies to
+make room for their own (Same approach) 
+- applies the idea of multiple choice and relocation together 
+MULTIPLE CHOICE: 
+	- we provide two different hashing functions and let 'it' choose 
+	ht1 - 0 1 2 3 
+		  4 5   15 (x 7)
+	ht2 - 0 1 2 3 
+		        7 
+RELOCATION: 
+	- If the bucket is occupied we simply push the existing value out 
+	and insert our value 
+Problem: keeps bouncing things bakc and forth so we have to find the 
+limit so we don't have an infinit loop 
+Cycle: Tells us that their are no open buckets that exist for all the 
+hashing functions 
+as our hash table fills up it triggers more collisions and more ping-ponging
+create a cycle and infinite loop 
+- We need to rehash the entire data structure 
+* Insertion: 
+	- O(1)
+	As long as the number of keys is kept below half of the capacity of the
+	hash table (no chance of cycles) 
+* Deletion: 
+	- O(1)
+	Just requires inspection of just two locations in the hash table 
+FUNCTION: h1(key) = key % size_of_hash_table 
+h2(key) = (key/size_of_hash_table) % size_of_hash_table
+
+Assignment 6 
+LAST CAN OF WHO HASH 
+
+Using code from other different assignments 
+- 4 different collision techniques 
+OPEN ADDRESSING: find an open place to place a value 
+(has a problem with clustering) 
+Linear Probing 
+	- keep moving to the next bucket till you find an open bucket 
+	- Keep track of the movements (occupied, empty, removed) 
+	REMOVED: 
+	- subject to primary clustering (clustered around two or three locations) 
+Quadratic Probing 
+	- square the amount of movements every time till you find and open bucket
+	- subject to secondary clustering
+
+CLOSED ADDRESSING: restructures the hash tables 
+Separate Chaining 
+	- Doubly linked list 
+	
+CUCKOO HASHING 
+Hybrid approach that isn't specifically closed or open 
+	- only ever in two places
+	CYCLE: no open buckets exist for all of the hashing functions 
+		- Solved by rehashing the data structure
+
+Hashing Efficiency 
+	- load function: how full a hash table is: 
+		a = current number of table entries/table size 
+	-unsuccessful searches require more time than successful searches 
+	- the most optimal collision technique so far is separate chaining
+	
+to avoid cycles just simply rehash when the table hits 50% occupency
+
+Notes for code 
+//done in the driver 
+//size of the table vs amount of data 
+//only needs a rehashing when data excedes size
+
+//cuckoo hashing original gets doubled 
+//return value

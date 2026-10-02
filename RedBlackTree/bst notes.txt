@@ -1,0 +1,102 @@
+BINARY SEARCH TREES
+- A binary search tree can only have at most two children
+Binary Search Trees Have: 
+- a right child
+- a left child
+- a right subtree
+- a left subtree
+
+The right child is always greater than its parent
+the left child is always less than its parent
+The right subtree is always greater than the root
+The left subtree is always less than the root 
+the right and left subtree are binary search trees 
+
+FULL BINARY TREE: every node in the tree has two children
+if T is not empty and has height h > 0, T is a full binary tree if 
+both its roots subtrees are full binary trees of height h - 1
+EQUATION: h >= 0 has 2^h - 1 (Maximum number of nodes)
+
+COMPLETE BINARY TREE: a binary tree that is full down to level h-1, 
+with level h filled in from left to right
+1. all nodes at level h-2 and above have two children
+2. nodes at level h-1 has children, all same level left nodes have two children
+3. node at level h-1 has one child that is a left child
+
+FULLY BALANCED: If the height of any node’s right subtree differs
+from the height of the node’s left subtree by no more than 1
+
+ASSIGNMENT #5
+Red-Black Tree
+
+- must be a type of binary search trees 
+- Every node has a color of either RED or BLACK 
+- root is always BLACK 
+- When a node is added it is automatically a RED node 
+- There are no two adjacent RED nodes (RED node cannot have a RED parent or child)
+- Every path from a node to its descendant (down to nullptr) has the same number 
+of BLACK nodes 
+
+First 3 phases done in the next couple of days 
+PHASE I: 
+takes a text file (read in and print out on the screen)
+
+PHASE II: 
+put the file output into a tree (do this today) 
+
+PHASE III: 
+create the red - black tree, override the insert (add a node and color 
+--> set the roots and nodes color as well in insert)
+Establish a color (up to me) 
+Maintane the color someway 
+
+DON'T FORGET YOUR VIRTUAL DESTRUCTORS
+
+PHASE IV: 
+first three methods are private methods 
+balance will recolor and rotate appropriatly 
+all of it will take place in the insert methods
+(hardest phase)
+
+PHASE V: 
+Implement two different traversal strategies - inorder and preorder
+
+No dynamically allocated memory in the RED-BLACK tree 
+so it won't have a copy constructor
+
+Use an array like the ones in the Card project
+for example String [] Color = {"No Color", "RED", "BLACK"};
+
+USE RECURSION FOR YOUR METHODS
+start all nodes as a red
+always check to see if you can recolor
+use rotations as a last resort
+
+check the parents and grandparent as well as the aunt and uncle
+see if we can recolor to solve the problem
+
+Right rotation
+1st node goes up 
+2nd node comes down
+basically 2nd node becomes a right child of a 1st node
+
+- check the coloring need to recolor 1st node as a black node 
+and recolor 2nd node to red 
+
+Left rotation
+1st node goes down
+2nd node goes up 
+basically 1st node becomes the left child of the 2nd node
+
+BALANCING A BST AND A RBT
+red black trees aren't guarenteed to be full binary trees
+Balanced: any nodes right subtree differs in height from the left subtree
+by no more than one
+RED-BLACK Balanced: any nodes right subtree differs in height from the left 
+subtree by no more than two
+
+Why don't we initially set the color to BLACK first? 
+Red nodes have more rules than black nodes so if we insert it as a 
+red node we can solve for the red problems which solves the black 
+problems too
+red nodes have more restrictions than black nodes 

@@ -1,80 +1,19 @@
-# Butler University — Computer Science Portfolio
+# Projects from CS341: Advanced Data Structures
 
-Welcome to my Butler University GitHub repository! This repository contains coursework, projects, research, and programming assignments I have completed throughout my time studying Computer Science at **Butler University**.
+## Course Structure
 
-The projects here represent my development across software engineering, programming, data analysis, parallel computing, artificial intelligence, and user experience.
+This course will explore the implementation and use of the Object-Oriented (OO) Programming Paradigm and Advanced Data Structures in the C++ programming language. We will focus on the creation of classes and objects in C++ and compare/contrast this process with Java (as taught in CS 248) – including how to create and use makefiles to compile and run your programs. We will use revision control, in the form of GIT, in order to manage our code as we progress through the semester. Through our exploration of C++ we will discuss advanced memory management techniques (heap and stack) and the use of pointers (including pointer arithmetic). We will also explore Advanced Data Structures including linked lists, hash tables, binary search and trees. We will conclude the course with exploration of a Trie in C++ and explore how this data structure compares to other common data structures that we already know. This course will be programming intensive.
 
----
-
-## About Me
-
-I am a Computer Science student with minors in Graphic Design and Data Science at **Butler University** with an interest in **software development, User Experience (UX/UI), and Developing innovative applications**.
-
-Throughout my coursework, I have worked on projects ranging from developing software and analyzing data to designing software systems and researching the use of Generative AI in Software Engineering education.
-
-I am particularly interested in opportunities where I can combine **design, programming, problem-solving, and user experience** to create useful applications.
-
----
-
-## Coursework & Areas of Study
-
-This repository includes work from several areas of my Computer Science education:
-
-* **Software Engineering**
-* **Object-Oriented Programming**
-* **Parallel & Distributed Computing**
-* **Data Analysis**
-* **Artificial Intelligence**
-* **Requirements Engineering**
-* **Database Design**
-* **User Experience / User Interface Design**
-* **Generative AI & Software Engineering Education**
-* **Systems & Application Development**
-
----
-
-## Programming & Technologies
-
-### Languages
-
-* C++
-* R
-* Java
-* SQL
-* HTML/CSS/Javascrip
-* React
-* Python
-
-### Tools & Technologies
-
-* MPI (Message Passing Interface)
-* Git & GitHub
-* RStudio
-* UML
-* Data visualization
-* Generative AI / LLMs
-* Three-tier software architecture
-* Relational databases
-
----
-
-# Repository Contents
-
-Branches include:
-
-* CS248
-* CS341
-* Networks
-* IT Help Desk
-
-### Projects
-
-#### IT Help Desk
-
-Worked with an IT Help Desk system to analyze requirements and develop software engineering artifacts including requirements documentation, user stories, and UML diagrams.
-
-#### Generative AI & Software Engineering Research
-
-One of my research projects investigates the role of **Generative AI in Software Engineering education**.
-
-The research examines how AI-generated software engineering artifacts compare with student-produced work and explores both the potential benefits and limitations of using GenAI in an introductory Software Engineering.
+The primary goal of this course is to provide an in-depth exploration of advanced data structures and advanced memory management techniques. Students should expect to leave this course with a better understanding of the role that memory management plays in a programming language and the role that advanced data structures play in successful programming. By the end of the course, students will have developed an understanding of the following main topics:
+* Be able to compare/contrast two Object-Oriented (OO) languages (C++ & Java)
+* The knowledge of how to use common tools (code analysis tools, debuggers, makefiles) to create robust programming solutions
+* The knowledge of advanced memory management techniques
+* Be able to identify/debug/avoid memory leaks in code
+* Understand what a pointer is in C++ and how it can properly be used
+* Understand how to create a Class and use an Object in C++
+* Be able to implement a Linked List in C++
+* Be able to implement a Hash Table in C++
+* Be able to implement a Binary Search Tree in C++
+* Be able to implement an Red Black Tree in C++
+* Understand how to perform a tree traversal in C++
+* Be able to implement a Trie in C++ and perform an analysis of its performance
